@@ -1,39 +1,42 @@
 #programa en python que recibe una oración y la transforma en palabras
 
-import os
+# parte uno proceso de analisis de sintaxis gramatical
+import os,sounddevice
 from playsound import playsound
 
+sounddevice.play(5)
 salida=[]
 
 dictletras = {
-'a':"a.mp3",
-'b':'b.mp3',
-'c':'k.mp3',
-'d':'d.mp3',
-'ch':'cha.mp3',
-'e':'e.mp3',
-'f':'f.mp3',
-'g':'g.mp3',
-'i':'i.mp3',
-'j':'j.mp3',
-'k':'k.mp3',
-'l':'l.mp3',
-'ll':"ll.mp3",
-'m':'m.mp3',
-'n':'n.mp3',
-'o':'o.mp3',
-'p':'p.mp3',
-'q':'k.mp3',
-'r':'r.mp3',
-'rr':'rr.mp3',
-'s':'s.mp3',
-'t':'t.mp3',
-'u':'u.mp3',
-'v':'b.mp3',
-'w':'w.mp3',
-'x':'x.mp3',
-'y':'ll.mp3',
-'z':'s.mp3'
+'a':"a.wav",
+'b':'b.wav',
+'c':'k.wav',
+'d':'d.wav',
+'ch':'cha.wav',
+'e':'e.wav',
+'f':'f.wav',
+'g':'g.wav',
+'i':'i.wav',
+'j':'j.wav',
+'k':'k.wav',
+'l':'l.wav',
+'ll':"ll.wav",
+'m':'m.wav',
+'n':'n.wav',
+'o':'o.wav',
+'p':'p.wav',
+'q':'k.wav',
+'r':'r.wav',
+'rr':'rr.wav',
+'s':'s.wav',
+'t':'t.wav',
+'u':'u.wav',
+'v':'b.wav',
+'w':'w.wav',
+'x':'x.wav',
+'y':'ll.wav',
+'z':'s.wav',
+'-':'-.wav'
 
 }
 
@@ -76,7 +79,7 @@ while True:
         elif len(texto)==i+1 and letra=='y':
             salida.append(dictletras['i'])
         elif letra==' ':
-            salida.append('espacio.mp3')
+            salida.append('espacio.wav')
 
         elif letra == 'l':
             if i+1<len(texto) and texto[i+1] =='l':
@@ -85,7 +88,11 @@ while True:
                 continue
             else:
                 salida.append(dictletras['l'])
-
+        elif letra == 'ñ':
+            salida.append(dictletras['n'])
+            salida.append(dictletras['i'])
+        elif letra == '-':
+            salida.append(dictletras['-'])
     for palabras in salida:
         playsound(palabras)
 
